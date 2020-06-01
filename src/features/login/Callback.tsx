@@ -1,4 +1,4 @@
-import { decode } from "querystring"
+import { parse } from "querystring"
 
 import { Pages } from "~/core/enums"
 import { zaloService } from "~/services"
@@ -15,7 +15,7 @@ export const Callback: React.FunctionComponent<ICallbackProps> = () => {
   const [, setToken] = useToken()
 
   const [, fetch] = useAsyncFn(async () => {
-    const { code }: any = decode(search)
+    const { code }: any = parse(search)
     const { accessToken }: any = await zaloService.login({ oauthToken: code })
 
     if (accessToken) {
