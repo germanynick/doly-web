@@ -1,0 +1,12 @@
+{
+  "CUSTOMER_CREATE": "Customer Create",
+  "CUSTOMER_UPDATE": "Customer Update",
+  "_FORMATS": {
+    "CUSTOMER_TYPES": {
+      "A": "Vip",
+      "B": "Member",
+      "C": "Basic",
+      "D": "New"
+    }
+  }
+}

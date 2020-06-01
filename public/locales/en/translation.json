@@ -1,0 +1,23 @@
+{
+  "CUSTOMER": "Customer",
+  "DASHBOARD": "Dashboard",
+  "NAME": "Name",
+  "TYPE": "Type",
+  "BALANCE": "Balance",
+  "PHONE": "Phone",
+  "EMAIL": "Email",
+  "ADDRESS": "Address",
+  "STATUS": "Status",
+  "ACCOUNT_NUMBER": "Account Number",
+  "GENDER": "Gender",
+  "CREATE": "Create",
+  "_ERRORS": {
+    "is_required": "Required",
+    "is_email": "Invalid email",
+    "is_phone": "Invalid phone Ex: +84#########",
+    "min_value": "Minimum value {{limit}}",
+    "max_value": "Maximum value {{limit}}",
+    "min_length": "Minimum length {{limit}}",
+    "max_length": "Maximum length {{limit}}"
+  }
+}

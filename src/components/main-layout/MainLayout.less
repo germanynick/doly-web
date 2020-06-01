@@ -1,0 +1,47 @@
+@import "../../less/themes/default.less";
+
+.main-layout {
+  height: 100vh;
+
+  .logo {
+    height: 32px;
+    background: @cyan-6;
+    margin: 16px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(https://dcassetcdn.com/design_img/2980691/681558/681558_16439713_2980691_e831b887_image.png);
+  }
+
+  .ant-layout-content {
+    margin: 64px auto 20px auto;
+    max-width: 1400px;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .ant-layout-header {
+    background-color: @white;
+    position: fixed;
+    width: calc(100% - 200px);
+    z-index: 1;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .avatar {
+      cursor: pointer;
+
+      .ant-avatar {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &.collapsed {
+    .ant-layout-header {
+      width: calc(100% - 80px);
+    }
+  }
+}
