@@ -2,7 +2,7 @@ import * as Icons from "@ant-design/icons"
 import { ColumnProps } from "antd/lib/table"
 
 import { BaseEntity } from "./entities"
-import { Pages } from "./enums"
+import { Pages, Translations, WeatherLocationType, WeatherState } from "./enums"
 
 export type IconNames = keyof typeof Icons
 
@@ -13,6 +13,9 @@ export interface IFeature {
   name: string
   icon: IconNames
   subFeatures?: IFeature[]
+  layout?: React.Component
+  permissions?: boolean | Function
+  translation?: Translations
 }
 
 export interface IDataQuery<TEntity extends BaseEntity = any> {
@@ -48,4 +51,27 @@ export interface IColumn<T extends BaseEntity = any> extends ColumnProps<T> {
   width?: number
   dataIndex?: string
   export?: boolean
+}
+
+export interface IConsolidatedWeather {
+  weather_state_name: string
+  weather_state_abbr: WeatherState
+  applicable_date: string
+  min_temp: number
+  max_temp: number
+  the_temp: number
+  timezone_name: string
+}
+
+export interface IWeatherLocation {
+  title: string
+  type: WeatherLocationType
+  woeid: number
+  latt_long: string
+  distance: number
+}
+
+export interface IWeatherLocationDetail extends IWeatherLocation {
+  consolidated_weather: IConsolidatedWeather[]
+  parent: IWeatherLocation
 }

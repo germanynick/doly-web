@@ -15,6 +15,11 @@ const features: IFeature[] = [
     href: Pages.Customer,
     icon: "TeamOutlined",
   },
+  {
+    name: "WEATHER",
+    href: Pages.Weather,
+    icon: "CloudOutlined",
+  },
 ]
 
 export const useMenuState = createGlobalState(features)

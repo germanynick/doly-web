@@ -3,19 +3,18 @@ import axios, { AxiosRequestConfig, Method } from "axios"
 import { loadProgressBar } from "axios-progress-bar"
 import cookies from "js-cookie"
 
-export const client = axios.create({ baseURL: "/api" })
+loadProgressBar()
 
-loadProgressBar(undefined, client)
+axios.defaults.baseURL = "/api"
 
-client.interceptors.request.use((config) => {
+axios.interceptors.request.use((config) => {
   const Authorization = `Bearer ${cookies.get(Keys.Authorization)}`
   const headers = { ...config.headers, Authorization }
   return { ...config, headers }
 })
 
 export abstract class BaseService {
-  abstract prefix: string
-  client = client
+  protected abstract prefix: string
 
   private request = async <T>(
     url: string,
@@ -25,7 +24,7 @@ export abstract class BaseService {
     const finalUrl = `${this.prefix}${url}`
 
     try {
-      const response = await this.client.request<T>({
+      const response = await axios.request<T>({
         url: finalUrl,
         method,
         ...config,

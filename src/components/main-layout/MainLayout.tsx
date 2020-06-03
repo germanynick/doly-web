@@ -1,8 +1,7 @@
 import "./MainLayout.less"
 
 import { Icon } from "~/components/icon"
-import { UserEntity } from "~/core/entities"
-import { IFeature } from "~/core/interfaces"
+import { useMainLayoutState } from "~/store/mainLayoutState"
 import { Avatar, Dropdown, Layout, Menu } from "antd"
 import { ClickParam } from "antd/lib/menu"
 import classnames from "classnames"
@@ -12,22 +11,12 @@ import { useHistory, useRouteMatch } from "react-router-dom"
 
 const { Header, Sider, Content } = Layout
 
-export interface IMainLayoutProps {
-  features: IFeature[]
-  collapsed: boolean
-  onToggle: () => void
-  onLogout: () => void
-  user?: UserEntity
-}
+export interface IMainLayoutProps {}
 
 export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({
   children,
-  features,
-  collapsed,
-  onToggle,
-  onLogout,
-  user,
 }) => {
+  const { features, collapsed, onToggle, onLogout, user } = useMainLayoutState()
   const { path: activeHref } = useRouteMatch()
   const history = useHistory()
   const { t } = useTranslation()

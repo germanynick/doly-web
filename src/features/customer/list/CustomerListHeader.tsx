@@ -56,10 +56,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
   }, [filterVisible, fields, columns])
 
   return (
-    <Row
-      justify="space-between"
-      style={{ backgroundColor: "white", padding: "12px" }}
-    >
+    <Row justify="space-between">
       <Col>
         <Input
           style={{ width: "250px" }}

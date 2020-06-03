@@ -1,6 +1,7 @@
 {
   "CUSTOMER": "Customer",
   "DASHBOARD": "Dashboard",
+  "WEATHER": "Weather",
   "NAME": "Name",
   "TYPE": "Type",
   "BALANCE": "Balance",
@@ -11,6 +12,10 @@
   "ACCOUNT_NUMBER": "Account Number",
   "GENDER": "Gender",
   "CREATE": "Create",
+  "SEARCH": "Search",
+  "NO_DATA": "No Data",
+  "RELOAD": "Reload",
+  "SOMETHING_WENT_WRONG": "Oops! Something went wrong",
   "_ERRORS": {
     "is_required": "Required",
     "is_email": "Invalid email",
