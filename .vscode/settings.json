@@ -1,14 +1,8 @@
 {
-  "sort-imports.default-sort-style": "module",
   "postcssSorting.config": {
-    "order": [
-      "custom-properties",
-      "dollar-variables",
-      "declarations",
-      "at-rules",
-      "rules"
-    ],
+    "order": ["custom-properties", "dollar-variables", "declarations", "at-rules", "rules"],
     "properties-order": "alphabetical",
     "unspecified-properties-position": "bottom"
-  }
+  },
+  "sort-imports.default-sort-style": "module-scoped"
 }

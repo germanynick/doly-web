@@ -1,11 +1,12 @@
-import { parse } from "querystring"
+import { parse } from 'querystring'
 
-import { Pages } from "~/core/enums"
-import { zaloService } from "~/services"
-import { useToken } from "~/store/userState"
-import React from "react"
-import { useHistory, useLocation } from "react-router-dom"
-import { useAsyncFn, useEffectOnce } from "react-use"
+import React from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
+import { useAsyncFn, useEffectOnce } from 'react-use'
+
+import { Pages } from '@core/enums'
+import { zaloService } from '@services'
+import { useToken } from '@store/userState'
 
 export interface ICallbackProps {}
 

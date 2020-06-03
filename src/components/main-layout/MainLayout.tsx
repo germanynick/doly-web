@@ -1,21 +1,20 @@
-import "./MainLayout.less"
+import './MainLayout.less'
 
-import { Icon } from "~/components/icon"
-import { useMainLayoutState } from "~/store/mainLayoutState"
-import { Avatar, Dropdown, Layout, Menu } from "antd"
-import { ClickParam } from "antd/lib/menu"
-import classnames from "classnames"
-import React from "react"
-import { useTranslation } from "react-i18next"
-import { useHistory, useRouteMatch } from "react-router-dom"
+import { Avatar, Dropdown, Layout, Menu } from 'antd'
+import { ClickParam } from 'antd/lib/menu'
+import classnames from 'classnames'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { useHistory, useRouteMatch } from 'react-router-dom'
+
+import { Icon } from '@components/icon'
+import { useMainLayoutState } from '@store/mainLayoutState'
 
 const { Header, Sider, Content } = Layout
 
 export interface IMainLayoutProps {}
 
-export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({
-  children,
-}) => {
+export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({ children }) => {
   const { features, collapsed, onToggle, onLogout, user } = useMainLayoutState()
   const { path: activeHref } = useRouteMatch()
   const history = useHistory()
@@ -23,24 +22,19 @@ export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({
 
   const handleMenuClick = React.useCallback(
     (params: ClickParam) => {
-      if (params.key === "logout") {
+      if (params.key === 'logout') {
         onLogout()
       }
     },
-    [onLogout]
+    [onLogout],
   )
 
   return (
-    <Layout className={classnames("main-layout", { collapsed })}>
+    <Layout className={classnames('main-layout', { collapsed })}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
 
-        <Menu
-          theme="dark"
-          mode="inline"
-          selectedKeys={[activeHref]}
-          onClick={({ key }) => history.push(key)}
-        >
+        <Menu theme="dark" mode="inline" selectedKeys={[activeHref]} onClick={({ key }) => history.push(key)}>
           {features?.map(({ href, name, icon }) => (
             <Menu.Item key={href} icon={<Icon name={icon} />}>
               {t(name)}
@@ -50,12 +44,9 @@ export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({
       </Sider>
       <Layout>
         <Header>
-          <Icon
-            name={collapsed ? "MenuUnfoldOutlined" : "MenuFoldOutlined"}
-            onClick={onToggle}
-          />
+          <Icon name={collapsed ? 'MenuUnfoldOutlined' : 'MenuFoldOutlined'} onClick={onToggle} />
           <Dropdown
-            trigger={["click"]}
+            trigger={['click']}
             overlay={
               <Menu onClick={handleMenuClick}>
                 <Menu.ItemGroup title={user?.name || user?.username}>
@@ -69,11 +60,7 @@ export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({
             placement="bottomRight"
           >
             <div className="avatar">
-              <Avatar
-                size="large"
-                icon={<Icon name="UserOutlined" />}
-                src={user?.profileUrl}
-              />
+              <Avatar size="large" icon={<Icon name="UserOutlined" />} src={user?.profileUrl} />
               <Icon name="CaretDownFilled" />
             </div>
           </Dropdown>

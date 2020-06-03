@@ -1,9 +1,10 @@
-import { MainLayout } from "~/components/main-layout"
-import { Translations } from "~/core/enums"
-import { NSContext } from "~/core/i18next"
-import React from "react"
+import React from 'react'
 
-import { CustomerList } from "./list"
+import { MainLayout } from '@components/main-layout'
+import { Translations } from '@core/enums'
+import { NSContext } from '@core/i18next'
+
+import { CustomerList } from './list'
 
 export interface ICustomerProps {}
 

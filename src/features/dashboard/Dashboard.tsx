@@ -1,7 +1,8 @@
-import { MainLayout } from "~/components/main-layout"
-import React from "react"
+import React from 'react'
 
-import { CustomerChart } from "./customer"
+import { MainLayout } from '@components/main-layout'
+
+import { CustomerChart } from './customer'
 
 export interface IDashboardProps {}
 

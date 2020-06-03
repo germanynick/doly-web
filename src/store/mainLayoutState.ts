@@ -1,24 +1,25 @@
-import { Pages } from "~/core/enums"
-import { IFeature } from "~/core/interfaces"
-import { createGlobalState } from "react-use"
+import { createGlobalState } from 'react-use'
 
-import { useToken, useUserState } from "./userState"
+import { Pages } from '@core/enums'
+import { IFeature } from '@core/interfaces'
+
+import { useToken, useUserState } from './userState'
 
 const features: IFeature[] = [
   {
-    name: "DASHBOARD",
+    name: 'DASHBOARD',
     href: Pages.Dashboard,
-    icon: "DashboardOutlined",
+    icon: 'DashboardOutlined',
   },
   {
-    name: "CUSTOMER",
+    name: 'CUSTOMER',
     href: Pages.Customer,
-    icon: "TeamOutlined",
+    icon: 'TeamOutlined',
   },
   {
-    name: "WEATHER",
+    name: 'WEATHER',
     href: Pages.Weather,
-    icon: "CloudOutlined",
+    icon: 'CloudOutlined',
   },
 ]
 

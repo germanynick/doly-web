@@ -1,9 +1,10 @@
-import { phone } from "~/core/validators"
-import { Input } from "antd"
-import React from "react"
-import { useField } from "react-final-form"
+import { Input } from 'antd'
+import React from 'react'
+import { useField } from 'react-final-form'
 
-import { FinalField, IFinalFieldProps } from "./FinalField"
+import { phone } from '@core/validators'
+
+import { FinalField, IFinalFieldProps } from './FinalField'
 
 export interface IInputPhoneFieldProps extends IFinalFieldProps {
   placeholder?: string

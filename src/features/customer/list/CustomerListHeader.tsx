@@ -1,25 +1,16 @@
-import { Icon } from "~/components/icon"
-import { CustomerEntity } from "~/core/entities"
-import { ExportType } from "~/core/enums"
-import { useNSTranslation } from "~/core/i18next"
-import { IOption } from "~/core/interfaces"
-import {
-  Button,
-  Checkbox,
-  Col,
-  Divider,
-  Dropdown,
-  Input,
-  Menu,
-  Row,
-  Space,
-} from "antd"
-import { ColumnProps } from "antd/lib/table"
-import { map } from "lodash"
-import React from "react"
-import { useToggle } from "react-use"
+import { Button, Checkbox, Col, Divider, Dropdown, Input, Menu, Row, Space } from 'antd'
+import { ColumnProps } from 'antd/lib/table'
+import { map } from 'lodash'
+import React from 'react'
+import { useToggle } from 'react-use'
 
-import { CustomerCreateButton } from "../create"
+import { Icon } from '@components/icon'
+import { CustomerEntity } from '@core/entities'
+import { ExportType } from '@core/enums'
+import { useNSTranslation } from '@core/i18next'
+import { IOption } from '@core/interfaces'
+
+import { CustomerCreateButton } from '../create'
 
 export interface ICustomerListHeaderProps {
   columns: ColumnProps<CustomerEntity>[]
@@ -51,7 +42,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
 
   React.useEffect(() => {
     if (filterVisible) {
-      updateInnerFields(fields || (map(columns, "dataIndex") as string[]))
+      updateInnerFields(fields || (map(columns, 'dataIndex') as string[]))
     }
   }, [filterVisible, fields, columns])
 
@@ -59,7 +50,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
     <Row justify="space-between">
       <Col>
         <Input
-          style={{ width: "250px" }}
+          style={{ width: '250px' }}
           placeholder="Search (Doesn't worked at this time)"
           prefix={<Icon name="SearchOutlined" />}
         />
@@ -68,7 +59,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
         <Button.Group>
           <CustomerCreateButton onSuccess={onCreate} />
           <Dropdown
-            trigger={["click"]}
+            trigger={['click']}
             overlay={
               <Menu onClick={({ key }) => onExport(key as ExportType)}>
                 {Object.entries(ExportType).map(([key, value]) => (
@@ -83,27 +74,20 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
           </Dropdown>
           <Dropdown
             visible={filterVisible}
-            trigger={["click"]}
+            trigger={['click']}
             overlay={
               <Row
                 style={{
-                  backgroundColor: "white",
-                  maxWidth: "300px",
-                  padding: "10px",
+                  backgroundColor: 'white',
+                  maxWidth: '300px',
+                  padding: '10px',
                 }}
               >
-                <Checkbox.Group
-                  value={innerFields}
-                  onChange={updateInnerFields as any}
-                >
+                <Checkbox.Group value={innerFields} onChange={updateInnerFields as any}>
                   <Row>
                     {options.map(({ label, value, disabled }) => (
                       <Col span={24} md={{ span: 12 }}>
-                        <Checkbox
-                          style={{ whiteSpace: "pre" }}
-                          value={value}
-                          disabled={disabled}
-                        >
+                        <Checkbox style={{ whiteSpace: 'pre' }} value={value} disabled={disabled}>
                           {label}
                         </Checkbox>
                       </Col>
@@ -111,7 +95,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
                   </Row>
                 </Checkbox.Group>
 
-                <Divider style={{ marginBottom: "12px" }} />
+                <Divider style={{ marginBottom: '12px' }} />
                 <Row justify="end">
                   <Space>
                     <Button onClick={toggleFilterVisible}>Cancel</Button>
@@ -129,10 +113,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
               </Row>
             }
           >
-            <Button
-              icon={<Icon name="TableOutlined" />}
-              onClick={toggleFilterVisible}
-            />
+            <Button icon={<Icon name="TableOutlined" />} onClick={toggleFilterVisible} />
           </Dropdown>
         </Button.Group>
       </Col>

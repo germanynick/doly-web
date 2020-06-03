@@ -1,7 +1,8 @@
-import { MainLayout } from "~/components/main-layout"
-import React from "react"
+import React from 'react'
 
-import { WeatherList } from "./list"
+import { MainLayout } from '@components/main-layout'
+
+import { WeatherList } from './list'
 
 export interface IWeatherProps {}
 

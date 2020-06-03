@@ -1,6 +1,7 @@
-import { Pages } from "~/core/enums"
-import React from "react"
-import { Redirect } from "react-router-dom"
+import React from 'react'
+import { Redirect } from 'react-router-dom'
+
+import { Pages } from '@core/enums'
 
 export interface IHomeProps {}
 
