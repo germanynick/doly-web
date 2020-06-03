@@ -1,6 +1,6 @@
-import { UserEntity } from "~/core/entities"
+import { UserEntity } from '@core/entities'
 
-import { BaseService } from "./BaseService"
+import { BaseService } from './BaseService'
 
 export interface ILoginDto {
   username: string
@@ -8,14 +8,14 @@ export interface ILoginDto {
 }
 
 export class AuthService extends BaseService {
-  prefix = "/auth"
+  prefix = '/auth'
 
   login = async (data: ILoginDto) => {
-    return this.post("/login", data)
+    return this.post('/login', data)
   }
 
   me = async () => {
-    return this.get<UserEntity>("/me")
+    return this.get<UserEntity>('/me')
   }
 }
 

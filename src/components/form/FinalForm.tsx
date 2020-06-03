@@ -1,23 +1,18 @@
-import { IOptional } from "~/core/interfaces"
-import { Form as AntForm } from "antd"
-import { ColProps } from "antd/lib/col"
-import React from "react"
-import { Form, FormProps, useField } from "react-final-form"
+import { Form as AntForm } from 'antd'
+import { ColProps } from 'antd/lib/col'
+import React from 'react'
+import { Form, FormProps, useField } from 'react-final-form'
+
+import { IOptional } from '@core/interfaces'
 
 export interface IFinalFormProps extends FormProps {
   id?: string
-  layout?: "vertical" | "horizontal"
+  layout?: 'vertical' | 'horizontal'
   labelCol?: ColProps
   wrapperCol?: ColProps
 }
 
-export const FinalForm: React.FunctionComponent<IFinalFormProps> = ({
-  id,
-  layout,
-  labelCol,
-  wrapperCol,
-  ...props
-}) => {
+export const FinalForm: React.FunctionComponent<IFinalFormProps> = ({ id, layout, labelCol, wrapperCol, ...props }) => {
   return (
     <Form
       {...props}

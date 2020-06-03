@@ -1,17 +1,9 @@
-import { dashboardService } from "~/services"
-import { Card } from "antd"
-import React from "react"
-import { useAsync } from "react-use"
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { Card } from 'antd'
+import React from 'react'
+import { useAsync } from 'react-use'
+import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+
+import { dashboardService } from '@services'
 
 export interface ICustomerChartProps {}
 

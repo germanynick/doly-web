@@ -1,21 +1,22 @@
-import "./Login.less"
+import './Login.less'
 
-import { FinalForm, InputField } from "~/components/form"
-import { Icon } from "~/components/icon"
-import { Pages } from "~/core/enums"
-import { required } from "~/core/validators"
-import { ILoginDto, authService, zaloService } from "~/services"
-import { useToken } from "~/store/userState"
-import { Alert, Avatar, Button, Divider, Form, Layout, Row, Space } from "antd"
-import React from "react"
-import { Redirect } from "react-router-dom"
-import { useAsyncFn } from "react-use"
+import { Alert, Avatar, Button, Divider, Form, Layout, Row, Space } from 'antd'
+import React from 'react'
+import { Redirect } from 'react-router-dom'
+import { useAsyncFn } from 'react-use'
+
+import { FinalForm, InputField } from '@components/form'
+import { Icon } from '@components/icon'
+import { Pages } from '@core/enums'
+import { required } from '@core/validators'
+import { ILoginDto, authService, zaloService } from '@services'
+import { useToken } from '@store/userState'
 
 export interface ILoginProps {}
 
 export const Login: React.FunctionComponent<ILoginProps> = () => {
   const [token, setToken] = useToken()
-  const isHttps = window.location.href.startsWith("https://")
+  const isHttps = window.location.href.startsWith('https://')
 
   const handleClickZalo = React.useCallback(async () => {
     try {
@@ -24,12 +25,10 @@ export const Login: React.FunctionComponent<ILoginProps> = () => {
     } catch (error) {}
   }, [])
 
-  const [{ loading, error }, handleSubmit] = useAsyncFn(
-    async (data: ILoginDto) => {
-      const { accessToken }: any = await authService.login(data as ILoginDto)
-      setToken(accessToken)
-    }
-  )
+  const [{ loading, error }, handleSubmit] = useAsyncFn(async (data: ILoginDto) => {
+    const { accessToken }: any = await authService.login(data as ILoginDto)
+    setToken(accessToken)
+  })
 
   if (token) {
     return <Redirect to={Pages.Dashboard} />
@@ -38,15 +37,11 @@ export const Login: React.FunctionComponent<ILoginProps> = () => {
   return (
     <Layout className="login-layout">
       {!isHttps && (
-        <Alert
-          banner={true}
-          type="warning"
-          message={`Login by Zalo require HTTPS. - Please run: "yarn start:https"`}
-        />
+        <Alert banner={true} type="warning" message={`Login by Zalo require HTTPS. - Please run: "yarn start:https"`} />
       )}
       <Layout.Content>
         <div className="login-form">
-          <Row justify="center" style={{ marginBottom: "24px" }}>
+          <Row justify="center" style={{ marginBottom: '24px' }}>
             <img
               height={80}
               alt="logo"
@@ -75,13 +70,7 @@ export const Login: React.FunctionComponent<ILoginProps> = () => {
             />
 
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                block={true}
-                size="large"
-                loading={loading}
-              >
+              <Button type="primary" htmlType="submit" block={true} size="large" loading={loading}>
                 Log in
               </Button>
             </Form.Item>

@@ -1,12 +1,12 @@
-import { IWeatherLocation, IWeatherLocationDetail } from "~/core/interfaces"
+import { IWeatherLocation, IWeatherLocationDetail } from '@core/interfaces'
 
-import { BaseService } from "./BaseService"
+import { BaseService } from './BaseService'
 
 export class WeatherService extends BaseService {
-  prefix = "/weather"
+  prefix = '/weather'
 
   searchByLocation = (query?: string) => {
-    return this.get<IWeatherLocation[]>("/location/search/", {
+    return this.get<IWeatherLocation[]>('/location/search/', {
       params: { query },
     })
   }

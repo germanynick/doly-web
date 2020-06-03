@@ -1,13 +1,13 @@
-import { CustomerEntity } from "~/core/entities"
-import { IDataPagination, IDataQuery } from "~/core/interfaces"
+import { CustomerEntity } from '@core/entities'
+import { IDataPagination, IDataQuery } from '@core/interfaces'
 
-import { BaseService } from "./BaseService"
+import { BaseService } from './BaseService'
 
 export class CustomerService extends BaseService {
-  prefix: string = "/customer"
+  prefix: string = '/customer'
 
   getAll = async (dataQuery?: IDataQuery<CustomerEntity>) => {
-    return this.put<IDataPagination<CustomerEntity>>("/", dataQuery)
+    return this.put<IDataPagination<CustomerEntity>>('/', dataQuery)
   }
 
   getOne = async (id: string, dataQuery?: IDataQuery<CustomerEntity>) => {
@@ -15,7 +15,7 @@ export class CustomerService extends BaseService {
   }
 
   create = async (data: Partial<CustomerEntity>) => {
-    return this.post<CustomerEntity>("/", data)
+    return this.post<CustomerEntity>('/', data)
   }
 
   update = async (id: string, data: Partial<CustomerEntity>) => {

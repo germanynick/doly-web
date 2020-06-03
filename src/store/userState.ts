@@ -1,12 +1,11 @@
-import { Keys } from "~/core/enums"
-import { authService } from "~/services"
-import cookies from "js-cookie"
-import React from "react"
-import { createGlobalState, useAsync, useCookie } from "react-use"
+import cookies from 'js-cookie'
+import React from 'react'
+import { createGlobalState, useAsync, useCookie } from 'react-use'
 
-export const useToken = createGlobalState<string | undefined>(
-  cookies.get(Keys.Authorization)
-)
+import { Keys } from '@core/enums'
+import { authService } from '@services'
+
+export const useToken = createGlobalState<string | undefined>(cookies.get(Keys.Authorization))
 
 export const useUserState = () => {
   const [token, setToken] = useToken()
