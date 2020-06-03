@@ -4,7 +4,7 @@ import { exportFile } from "~/core/exports"
 import { useNSTranslation } from "~/core/i18next"
 import { IColumn, IDataQuery } from "~/core/interfaces"
 import { customerService } from "~/services"
-import { Button, Table } from "antd"
+import { Button, Card, Table } from "antd"
 import { PaginationConfig } from "antd/lib/pagination"
 import { SorterResult } from "antd/lib/table/interface"
 import { filter } from "lodash"
@@ -147,14 +147,18 @@ export const CustomerList: React.FunctionComponent<ICustomerListProps> = () => {
   }, [refetch])
 
   return (
-    <>
-      <CustomerListHeader
-        columns={COLUMNS}
-        fields={fields}
-        onChangeFields={handleChangeFields}
-        onExport={handleExport}
-        onCreate={refetch}
-      />
+    <Card
+      title={
+        <CustomerListHeader
+          columns={COLUMNS}
+          fields={fields}
+          onChangeFields={handleChangeFields}
+          onExport={handleExport}
+          onCreate={refetch}
+        />
+      }
+      bodyStyle={{ padding: 0 }}
+    >
       <Table
         loading={loading}
         rowKey="id"
@@ -184,6 +188,6 @@ export const CustomerList: React.FunctionComponent<ICustomerListProps> = () => {
           )
         })}
       </Table>
-    </>
+    </Card>
   )
 }

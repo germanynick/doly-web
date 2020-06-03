@@ -6,10 +6,7 @@ import { Pages } from "./enums"
 
 export interface IPrivateProps extends RouteProps {}
 
-const Renderer: React.FunctionComponent<IPrivateProps> = ({
-  component,
-  ...props
-}) => {
+const Renderer: React.FunctionComponent<IPrivateProps> = ({ component }) => {
   const { loading, error, token } = useUserState()
 
   if (loading) {
@@ -21,7 +18,7 @@ const Renderer: React.FunctionComponent<IPrivateProps> = ({
   }
 
   // @ts-ignore
-  return React.createElement(component, props)
+  return React.createElement(component)
 }
 
 export const PrivateRoute: React.FunctionComponent<IPrivateProps> = ({
