@@ -1,5 +1,5 @@
-import { Skeleton } from 'antd'
-import React from 'react'
+import { Empty, Skeleton } from 'antd'
+import React, { Suspense } from 'react'
 import { Route as BaseRoute, Redirect, RouteProps } from 'react-router-dom'
 
 import { useUserState } from '@store/userState'
@@ -14,6 +14,9 @@ export interface IRouteProps extends RouteProps {
 }
 
 const EmptyLayout: React.FunctionComponent = ({ children }) => <>{children}</>
+
+const Namespace: React.FunctionComponent<IRouteProps> = ({ children, translation }) =>
+  translation ? <NSContext.Provider value={translation}>{children}</NSContext.Provider> : <>{children}</>
 
 const Renderer: React.FunctionComponent<IRouteProps> = ({ component }) => {
   const { loading, token, error } = useUserState()
@@ -41,11 +44,13 @@ export const PrivateRoute: React.FunctionComponent<IRouteProps> = ({
     <BaseRoute
       {...props}
       render={() => (
-        <NSContext.Provider value={translation}>
-          <Layout>
-            <Renderer component={component} />
-          </Layout>
-        </NSContext.Provider>
+        <Layout>
+          <Suspense fallback={<Empty description={false} />}>
+            <Namespace translation={translation}>
+              <Renderer component={component} />
+            </Namespace>
+          </Suspense>
+        </Layout>
       )}
     />
   )
@@ -62,9 +67,11 @@ export const PublicRoute: React.FunctionComponent<IRouteProps> = ({
     <BaseRoute
       {...props}
       render={() => (
-        <NSContext.Provider value={translation}>
-          <Layout>{React.createElement(component as any)}</Layout>
-        </NSContext.Provider>
+        <Layout>
+          <Suspense fallback={<Empty description={false} />}>
+            <Namespace translation={translation}>{React.createElement(component as any)}</Namespace>
+          </Suspense>
+        </Layout>
       )}
     />
   )
