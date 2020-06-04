@@ -1,5 +1,5 @@
 import cookies from 'js-cookie'
-import React from 'react'
+import { useEffect } from 'react'
 import { createGlobalState, useAsync, useCookie } from 'react-use'
 
 import { Keys } from '@core/enums'
@@ -17,7 +17,7 @@ export const useUserState = () => {
     }
   }, [token])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (token) {
       updateToken(token, { expires: 3600 })
     } else {
@@ -25,7 +25,7 @@ export const useUserState = () => {
     }
   }, [token, updateToken, deleteToken])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (error) {
       setToken(undefined)
       deleteToken()

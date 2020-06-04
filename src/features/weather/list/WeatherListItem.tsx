@@ -25,7 +25,7 @@ export const WeatherListItem: React.FunctionComponent<IWeatherListItemProps> = (
       <Typography.Title level={3}>{title}</Typography.Title>
       <Row gutter={12}>
         {items?.map((item, index) => (
-          <Col key={index} span={4} className="weather-item">
+          <Col key={index} span={12} sm={{ span: 8 }} md={{ span: 4 }} className="weather-item">
             <Card loading={loading}>
               <Space direction="vertical">
                 <Typography.Text>{moment(item?.applicable_date, 'YYYY-MM-DD').format('dddd')}</Typography.Text>

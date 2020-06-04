@@ -1,13 +1,14 @@
 import './MainLayout.less'
 
-import { Avatar, Dropdown, Layout, Menu } from 'antd'
+import { Avatar, Button, Dropdown, Layout, Menu, Tooltip } from 'antd'
 import { ClickParam } from 'antd/lib/menu'
 import classnames from 'classnames'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 
 import { Icon } from '@components/icon'
+import { Pages } from '@core/enums'
 import { useMainLayoutState } from '@store/mainLayoutState'
 
 const { Header, Sider, Content } = Layout
@@ -20,7 +21,7 @@ export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({ children
   const history = useHistory()
   const { t } = useTranslation()
 
-  const handleMenuClick = React.useCallback(
+  const handleMenuClick = useCallback(
     (params: ClickParam) => {
       if (params.key === 'logout') {
         onLogout()
@@ -35,9 +36,14 @@ export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({ children
         <div className="logo" />
 
         <Menu theme="dark" mode="inline" selectedKeys={[activeHref]} onClick={({ key }) => history.push(key)}>
-          {features?.map(({ href, name, icon }) => (
+          {features?.map(({ href, name, icon, permissions }) => (
             <Menu.Item key={href} icon={<Icon name={icon} />}>
               {t(name)}
+              {permissions && (
+                <Tooltip title="Login to access this feature.">
+                  <Icon name="LockOutlined" style={{ color: 'red' }} />
+                </Tooltip>
+              )}
             </Menu.Item>
           ))}
         </Menu>
@@ -45,25 +51,32 @@ export const MainLayout: React.FunctionComponent<IMainLayoutProps> = ({ children
       <Layout>
         <Header>
           <Icon name={collapsed ? 'MenuUnfoldOutlined' : 'MenuFoldOutlined'} onClick={onToggle} />
-          <Dropdown
-            trigger={['click']}
-            overlay={
-              <Menu onClick={handleMenuClick}>
-                <Menu.ItemGroup title={user?.name || user?.username}>
-                  <Menu.Divider />
-                  <Menu.Item key="logout">
-                    <Icon name="LogoutOutlined" /> Logout
-                  </Menu.Item>
-                </Menu.ItemGroup>
-              </Menu>
-            }
-            placement="bottomRight"
-          >
-            <div className="avatar">
-              <Avatar size="large" icon={<Icon name="UserOutlined" />} src={user?.profileUrl} />
-              <Icon name="CaretDownFilled" />
-            </div>
-          </Dropdown>
+          {user ? (
+            <Dropdown
+              trigger={['click']}
+              overlay={
+                <Menu onClick={handleMenuClick}>
+                  <Menu.ItemGroup title={user.name || user.username}>
+                    <Menu.Divider />
+                    <Menu.Item key="logout">
+                      <Icon name="LogoutOutlined" /> Logout
+                    </Menu.Item>
+                  </Menu.ItemGroup>
+                </Menu>
+              }
+              placement="bottomRight"
+            >
+              <div className="avatar">
+                <Avatar size="large" icon={<Icon name="UserOutlined" />} src={user.profileUrl} />
+                <Icon name="CaretDownFilled" />
+              </div>
+            </Dropdown>
+          ) : (
+            <Button type="link" onClick={() => history.push(Pages.Login)}>
+              <Icon name="LoginOutlined" />
+              Login
+            </Button>
+          )}
         </Header>
         <Content>{children}</Content>
       </Layout>

@@ -1,10 +1,10 @@
 import './WeatherList.less'
 
-import { Card, Input, Space, Spin } from 'antd'
+import { Input, Space } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useAsyncFn } from 'react-use'
 
-import { EmptyData, EmptyError } from '@components/empty'
+import { AsyncCard } from '@components/card'
 import { Icon } from '@components/icon'
 import { useNSTranslation } from '@core/i18next'
 import { weatherService } from '@services'
@@ -17,14 +17,16 @@ export const WeatherList: React.FunctionComponent<IWeatherListProps> = () => {
   const { t } = useNSTranslation()
   const [search, updateSearch] = useState('Ho Chi Minh City')
 
-  const [{ loading, value, error }, refetch] = useAsyncFn(() => weatherService.searchByLocation(search), [search])
+  const [state, refetch] = useAsyncFn(() => weatherService.searchByLocation(search), [search])
 
   useEffect(() => {
     refetch()
   }, [refetch])
 
   return (
-    <Card
+    <AsyncCard
+      state={state}
+      onReload={refetch}
       className="weather-layout"
       title={
         <Input
@@ -35,19 +37,11 @@ export const WeatherList: React.FunctionComponent<IWeatherListProps> = () => {
         />
       }
     >
-      <Spin spinning={loading}>
-        {error ? (
-          <EmptyError onReload={refetch} />
-        ) : value?.length === 0 ? (
-          <EmptyData />
-        ) : (
-          <Space direction="vertical" style={{ width: '100%' }}>
-            {value?.slice(0, 5).map((location) => (
-              <WeatherListItem key={location.woeid} location={location} />
-            ))}
-          </Space>
-        )}
-      </Spin>
-    </Card>
+      <Space direction="vertical" style={{ width: '100%' }}>
+        {state?.value?.slice(0, 5).map((location) => (
+          <WeatherListItem key={location.woeid} location={location} />
+        ))}
+      </Space>
+    </AsyncCard>
   )
 }

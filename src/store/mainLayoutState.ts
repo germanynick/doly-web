@@ -12,14 +12,15 @@ const features: IFeature[] = [
     icon: 'DashboardOutlined',
   },
   {
-    name: 'CUSTOMER',
-    href: Pages.Customer,
-    icon: 'TeamOutlined',
-  },
-  {
     name: 'WEATHER',
     href: Pages.Weather,
     icon: 'CloudOutlined',
+  },
+  {
+    name: 'CUSTOMER',
+    href: Pages.Customer,
+    icon: 'TeamOutlined',
+    permissions: true,
   },
 ]
 

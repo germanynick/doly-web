@@ -1,7 +1,7 @@
 import './Login.less'
 
 import { Alert, Avatar, Button, Divider, Form, Layout, Row, Space } from 'antd'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useAsyncFn } from 'react-use'
 
@@ -18,7 +18,7 @@ export const Login: React.FunctionComponent<ILoginProps> = () => {
   const [token, setToken] = useToken()
   const isHttps = window.location.href.startsWith('https://')
 
-  const handleClickZalo = React.useCallback(async () => {
+  const handleClickZalo = useCallback(async () => {
     try {
       const { loginUrl }: any = await zaloService.zaloLoginUrl()
       window.location.replace(loginUrl)

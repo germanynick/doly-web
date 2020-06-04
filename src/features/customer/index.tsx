@@ -1,1 +1,1 @@
-export * from "./Customer"
+export * from './CustomerPage'

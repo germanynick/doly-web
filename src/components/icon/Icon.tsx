@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import IconDefault, * as Icons from '@ant-design/icons'
 import { IconComponentProps } from '@ant-design/icons/dist/components/Icon'
@@ -9,7 +9,7 @@ export interface IIconProps extends IconComponentProps {
 }
 
 export const Icon: React.FunctionComponent<IIconProps> = ({ name, ...props }) => {
-  const Component = React.useMemo(() => {
+  const Component = useMemo(() => {
     return name && Icons[name]
   }, [name])
 
