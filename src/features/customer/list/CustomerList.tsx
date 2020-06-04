@@ -2,7 +2,7 @@ import { Button, Card, Table } from 'antd'
 import { PaginationConfig } from 'antd/lib/pagination'
 import { SorterResult } from 'antd/lib/table/interface'
 import { filter } from 'lodash'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useAsyncFn } from 'react-use'
 
 import { CustomerEntity } from '@core/entities'
@@ -95,7 +95,7 @@ export const CustomerList: React.FunctionComponent<ICustomerListProps> = () => {
   })
   const [fields, handleChangeFields] = useState<string[]>()
 
-  const dataQuery = React.useMemo<IDataQuery>(() => {
+  const dataQuery = useMemo<IDataQuery>(() => {
     const order: any = sorter?.order && {
       [sorter.field as string]: sorter.order === 'ascend' ? 'ASC' : 'DESC',
     }
@@ -110,7 +110,7 @@ export const CustomerList: React.FunctionComponent<ICustomerListProps> = () => {
     return customerService.getAll(dataQuery)
   }, [dataQuery])
 
-  const columns = React.useMemo<IColumn<CustomerEntity>[]>(
+  const columns = useMemo<IColumn<CustomerEntity>[]>(
     () => [
       ...filter(COLUMNS, (column) => (fields ? fields.includes(column.dataIndex as string) : true)),
       {

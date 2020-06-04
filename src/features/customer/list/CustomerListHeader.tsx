@@ -1,7 +1,7 @@
 import { Button, Checkbox, Col, Divider, Dropdown, Input, Menu, Row, Space } from 'antd'
 import { ColumnProps } from 'antd/lib/table'
 import { map } from 'lodash'
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useToggle } from 'react-use'
 
 import { Icon } from '@components/icon'
@@ -28,11 +28,11 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
   onExport,
 }) => {
   const { t } = useNSTranslation()
-  const [innerFields, updateInnerFields] = React.useState<string[]>([])
+  const [innerFields, updateInnerFields] = useState<string[]>([])
 
   const [filterVisible, toggleFilterVisible] = useToggle(false)
 
-  const options = React.useMemo<IOption[]>(() => {
+  const options = useMemo<IOption[]>(() => {
     return map(columns, ({ dataIndex, title, fixed }) => ({
       label: t(title as string),
       value: dataIndex as string,
@@ -40,7 +40,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
     }))
   }, [columns, t])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (filterVisible) {
       updateInnerFields(fields || (map(columns, 'dataIndex') as string[]))
     }
@@ -86,7 +86,7 @@ export const CustomerListHeader: React.FunctionComponent<ICustomerListHeaderProp
                 <Checkbox.Group value={innerFields} onChange={updateInnerFields as any}>
                   <Row>
                     {options.map(({ label, value, disabled }) => (
-                      <Col span={24} md={{ span: 12 }}>
+                      <Col key={value} span={24} md={{ span: 12 }}>
                         <Checkbox style={{ whiteSpace: 'pre' }} value={value} disabled={disabled}>
                           {label}
                         </Checkbox>

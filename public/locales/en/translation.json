@@ -16,6 +16,8 @@
   "NO_DATA": "No Data",
   "RELOAD": "Reload",
   "SOMETHING_WENT_WRONG": "Oops! Something went wrong",
+  "GITHUB_FE": "https://github.com/germanynick/doly-web",
+  "GITHUB_BE": "https://github.com/germanynick/doly-services",
   "_ERRORS": {
     "is_required": "Required",
     "is_email": "Invalid email",

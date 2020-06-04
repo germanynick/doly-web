@@ -1,8 +1,9 @@
-import * as Icons from "@ant-design/icons"
-import { ColumnProps } from "antd/lib/table"
+import { ColumnProps } from 'antd/lib/table'
 
-import { BaseEntity } from "./entities"
-import { Pages, Translations, WeatherLocationType, WeatherState } from "./enums"
+import * as Icons from '@ant-design/icons'
+
+import { BaseEntity } from './entities'
+import { Pages, Translations, WeatherLocationType, WeatherState } from './enums'
 
 export type IconNames = keyof typeof Icons
 
@@ -24,7 +25,7 @@ export interface IDataQuery<TEntity extends BaseEntity = any> {
   filters?: Partial<TEntity>
   search?: string
   fields?: (keyof TEntity)[]
-  order?: { [P in keyof TEntity]?: "ASC" | "DESC" }
+  order?: { [P in keyof TEntity]?: 'ASC' | 'DESC' }
 }
 
 export interface IDataPagination<TEntity = any> {
