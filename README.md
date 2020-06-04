@@ -4,22 +4,63 @@
 >
 > ### Frontend Stack [https://github.com/germanynick/doly-web](https://github.com/germanynick/doly-web)
 >
-> - ReactJS (create-react-app)
-> - Typescript
-> - Less && Antd (UI Components)
-> - Craco (**C**reate **R**eact **A**pp **C**onfiguration **O**verride)
-> - i18next (localization & internalization)
-> - ...
+> [x] ReactJS ([CRA](https://github.com/facebook/create-react-app))
+> [x] React Hooks ([react-use](https://streamich.github.io/react-use))
+> [x] Typescript
+> [x] Less && Antd (UI Components)
+> [x] Craco (**C**reate **R**eact **A**pp **C**onfiguration **O**verride)
+> [x] i18next (localization & internalization)
+> [ ] Storybook
+> [ ] ...
+>
+> #### Alternatives:
+>
+> [ ] NextJS, Gatsby
+> [ ] Recoil
+> [ ] GraphQL
+> [ ] styled-components, styled-system
+> [ ] Redux, redux-observable, redux-saga, redux-thunk
+> [ ] Mobx
 >
 > ### Backend Stack [https://github.com/germanynick/doly-services](https://github.com/germanynick/doly-services)
 >
-> - NestJs (Nodejs Framework)
-> - Typescript
-> - Typeorm (Database ORM & Migration)
-> - Passport (JWT Authentication - Support Zalo Login)
-> - ...
+> [x] NestJs (Nodejs Framework)
+> [x] Typescript
+> [x] Typeorm (Database ORM & Migration)
+> [x] Passport (JWT Authentication - Support Zalo Login)
+> [ ] Transporter (NATS, KAFKA.... Support Event Driven Architecture)
+> [ ] Activity Methodology
+> [ ] Caching
+> [ ] Logger
+> [ ] Task Scheduler (Background Jobs)
+> [ ] ...
 >
-> :warning: **If you want to access all system, please run backend services!**: Otherwise, you just only access public features.
+> #### Alternatives:
+>
+> [ ] MoleculerJS ([official-link](https://moleculer.services))
+> [ ] MongoDB, Mongoose
+> [ ] Apollo Server
+> [ ] styled-components, styled-system
+> [ ] Redux, redux-observable, redux-saga, redux-thunk
+> [ ] Mobx
+> [ ] ...
+>
+> ### DevOps Stack (Not ready yet)
+>
+> [ ] Docker
+> [ ] Docker Compose (Local Deployment)
+> [ ] Kubernetes
+> [ ] CI/CD
+> [ ] ...
+>
+> :warning: **If you want to access all system, please run bold backend & frontend!**: Otherwise, you just only access public features.
+
+> ### Criteria
+>
+> :zap: Support Enterprise Application
+> :zap: Clear code structure
+> :zap: Maintainable & Readable & Performace
+> :zap: ....
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
