@@ -1,3 +1,26 @@
+> ## Project Information
+>
+> This is a personal project that includes:
+>
+> ### Frontend Stack [https://github.com/germanynick/doly-web](https://github.com/germanynick/doly-web)
+>
+> - ReactJS (create-react-app)
+> - Typescript
+> - Less && Antd (UI Components)
+> - Craco (**C**reate **R**eact **A**pp **C**onfiguration **O**verride)
+> - i18next (localization & internalization)
+> - ...
+>
+> ### Backend Stack [https://github.com/germanynick/doly-services](https://github.com/germanynick/doly-services)
+>
+> - NestJs (Nodejs Framework)
+> - Typescript
+> - Typeorm (Database ORM & Migration)
+> - Passport (JWT Authentication - Support Zalo Login)
+> - ...
+>
+> :warning: **If you want to access all system, please run backend services!**: Otherwise, you just only access public features.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -11,6 +34,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### `yarn start:https`
+
+Runs the app in the development mode. support HTTPS<br />
+Open [https://localhost:3000](https://localhost:3000) to view it in the browser.
 
 ### `yarn test`
 
