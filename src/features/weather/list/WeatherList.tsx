@@ -13,15 +13,25 @@ import { WeatherListItem } from './WeatherListItem'
 
 export interface IWeatherListProps {}
 
-export const WeatherList: React.FunctionComponent<IWeatherListProps> = () => {
-  const { t } = useNSTranslation()
-  const [search, updateSearch] = useState('Ho Chi Minh City')
+export const useWeatherListLogic = (props: IWeatherListProps) => {
+  const [search, onSearch] = useState<string>()
 
   const [state, refetch] = useAsyncFn(() => weatherService.searchByLocation(search), [search])
 
   useEffect(() => {
     refetch()
   }, [refetch])
+
+  return {
+    state,
+    refetch,
+    onSearch,
+  }
+}
+
+export const WeatherList: React.FunctionComponent<IWeatherListProps> = (props) => {
+  const { t } = useNSTranslation()
+  const { state, refetch, onSearch } = useWeatherListLogic(props)
 
   return (
     <AsyncCard
@@ -33,13 +43,13 @@ export const WeatherList: React.FunctionComponent<IWeatherListProps> = () => {
           style={{ maxWidth: '300px' }}
           placeholder={t('SEARCH')}
           prefix={<Icon name="SearchOutlined" />}
-          onPressEnter={(event) => updateSearch(event.currentTarget.value)}
+          onPressEnter={(event) => onSearch(event.currentTarget.value)}
         />
       }
     >
       <Space direction="vertical" style={{ width: '100%' }}>
-        {state?.value?.slice(0, 5).map((location) => (
-          <WeatherListItem key={location.woeid} location={location} />
+        {state?.value?.slice(0, 5).map(({ woeid, title }) => (
+          <WeatherListItem key={woeid} woeid={woeid} title={title} />
         ))}
       </Space>
     </AsyncCard>
