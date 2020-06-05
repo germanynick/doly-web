@@ -4,21 +4,29 @@ import moment from 'moment'
 import React from 'react'
 import { useAsync } from 'react-use'
 
-import { IConsolidatedWeather, IWeatherLocation } from '@core/interfaces'
+import { IConsolidatedWeather } from '@core/interfaces'
 import { weatherService } from '@services'
 
 export interface IWeatherListItemProps {
-  location: IWeatherLocation
+  woeid: number
+  title: string
 }
 
-export const WeatherListItem: React.FunctionComponent<IWeatherListItemProps> = (props) => {
-  const {
-    location: { woeid, title },
-  } = props
-
+export const useWeatherListItemLogic = (props: IWeatherListItemProps) => {
+  const { woeid, title } = props
   const { loading, value } = useAsync(() => weatherService.weatherByLocation(woeid), [woeid])
 
   const items = value?.consolidated_weather || times(6, () => ({} as IConsolidatedWeather))
+
+  return {
+    title,
+    items,
+    loading,
+  }
+}
+
+export const WeatherListItem: React.FunctionComponent<IWeatherListItemProps> = (props) => {
+  const { items, loading, title } = useWeatherListItemLogic(props)
 
   return (
     <>
