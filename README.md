@@ -40,9 +40,6 @@
 > - [ ] MoleculerJS ([official-link](https://moleculer.services))
 > - [ ] MongoDB, Mongoose
 > - [ ] Apollo Server
-> - [ ] styled-components, styled-system
-> - [ ] Redux, redux-observable, redux-saga, redux-thunk
-> - [ ] Mobx
 > - [ ] ...
 >
 > ### DevOps Stack (Not ready yet)
