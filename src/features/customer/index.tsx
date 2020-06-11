@@ -1,1 +1,1 @@
-export * from "./Customer"
+export { CustomerPage as default } from './CustomerPage'

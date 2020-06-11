@@ -1,3 +1,64 @@
+> ## Project Information
+>
+> This is a personal project that includes:
+>
+> ### Frontend Stack [https://github.com/germanynick/doly-web](https://github.com/germanynick/doly-web)
+>
+> - [x] ReactJS ([CRA](https://github.com/facebook/create-react-app))
+> - [x] React Hooks ([react-use](https://streamich.github.io/react-use))
+> - [x] Typescript
+> - [x] Less && Antd (UI Components)
+> - [x] Craco (**C**reate **R**eact **A**pp **C**onfiguration **O**verride)
+> - [x] i18next (localization & internalization)
+> - [ ] Storybook
+> - [ ] ...
+>
+> #### Alternatives:
+>
+> - [ ] NextJS, Gatsby
+> - [ ] Recoil
+> - [ ] GraphQL
+> - [ ] styled-components, styled-system
+> - [ ] Redux, redux-observable, redux-saga, redux-thunk
+> - [ ] Mobx
+>
+> ### Backend Stack [https://github.com/germanynick/doly-services](https://github.com/germanynick/doly-services)
+>
+> - [x] NestJs (Nodejs Framework)
+> - [x] Typescript
+> - [x] Typeorm (Database ORM & Migration)
+> - [x] Passport (JWT Authentication - Support Zalo Login)
+> - [ ] Transporter (NATS, KAFKA.... Support Event Driven Architecture)
+> - [ ] Activity Methodology
+> - [ ] Caching
+> - [ ] Logger
+> - [ ] Task Scheduler (Background Jobs)
+> - [ ] ...
+>
+> #### Alternatives:
+>
+> - [ ] MoleculerJS ([official-link](https://moleculer.services))
+> - [ ] MongoDB, Mongoose
+> - [ ] Apollo Server
+> - [ ] ...
+>
+> ### DevOps Stack (Not ready yet)
+>
+> - [ ] Docker
+> - [ ] Docker Compose (Local Deployment)
+> - [ ] Kubernetes
+> - [ ] CI/CD
+> - [ ] ...
+>
+> :warning: **If you want to access all system, please run bold backend & frontend!**: Otherwise, you just only access public features.
+
+> ### Criteria
+>
+> - :zap: Support Enterprise Application
+> - :zap: Clear code structure
+> - :zap: Maintainable & Readable & Performace
+> - :zap: ....
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -11,6 +72,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### `yarn start:https`
+
+Runs the app in the development mode. support HTTPS<br />
+Open [https://localhost:3000](https://localhost:3000) to view it in the browser.
 
 ### `yarn test`
 

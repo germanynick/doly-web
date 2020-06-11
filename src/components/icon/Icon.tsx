@@ -1,17 +1,15 @@
-import IconDefault, * as Icons from "@ant-design/icons"
-import { IconComponentProps } from "@ant-design/icons/dist/components/Icon"
-import { IconNames } from "~/core/interfaces"
-import React from "react"
+import React, { useMemo } from 'react'
+
+import IconDefault, * as Icons from '@ant-design/icons'
+import { IconComponentProps } from '@ant-design/icons/dist/components/Icon'
+import { IconNames } from '@core/interfaces'
 
 export interface IIconProps extends IconComponentProps {
   name?: IconNames
 }
 
-export const Icon: React.FunctionComponent<IIconProps> = ({
-  name,
-  ...props
-}) => {
-  const Component = React.useMemo(() => {
+export const Icon: React.FunctionComponent<IIconProps> = ({ name, ...props }) => {
+  const Component = useMemo(() => {
     return name && Icons[name]
   }, [name])
 

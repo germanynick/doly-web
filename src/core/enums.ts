@@ -15,15 +15,19 @@ export enum Keys {
 }
 
 export enum Pages {
+  Home = "/",
   Login = "/login",
   LoginCallback = "/login/callback",
-  Dashboard = "/",
+  Dashboard = "/dashboard",
   Customer = "/customer",
+  Weather = "/weather",
 }
 
 export enum Translations {
   Default = "translation",
   Customer = "customer",
+  Dashboard = "dashboard",
+  Weather = "weather",
 }
 
 export enum ErrorCode {
@@ -42,4 +46,21 @@ export enum ErrorCode {
 export enum ExportType {
   Excel = "excel",
   Pdf = "pdf",
+}
+
+export enum WeatherLocationType {
+  City = "City",
+}
+
+export enum WeatherState {
+  Snow = "sn",
+  Sleet = "sl",
+  Hail = "h",
+  Thunderstorm = "t",
+  HeavyRain = "hr",
+  LightRain = "lr",
+  Showers = "s",
+  HeavyCloud = "hc",
+  LightCloud = "lc",
+  Clear = "c",
 }
