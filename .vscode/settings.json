@@ -4,5 +4,6 @@
     "properties-order": "alphabetical",
     "unspecified-properties-position": "bottom"
   },
-  "sort-imports.default-sort-style": "module-scoped"
+  "sort-imports.default-sort-style": "module-scoped",
+  "jest.pathToJest": "yarn test"
 }
