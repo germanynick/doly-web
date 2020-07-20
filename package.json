@@ -31,7 +31,7 @@
     "i18next": "19.4.5",
     "i18next-browser-languagedetector": "4.2.0",
     "i18next-http-backend": "1.0.15",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "moment": "2.26.0",
     "pdfmake": "0.1.65",
     "querystring": "0.2.0",
